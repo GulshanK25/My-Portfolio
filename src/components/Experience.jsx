@@ -95,7 +95,7 @@ const Experience = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-gray-800 to-black text-white">
+    <div id = "experience" className="bg-gradient-to-b from-gray-800 to-black text-white">
       <div className="container px-4 py-8 mx-auto">
         <h2 className="text-4xl font-bold border-b-4 border-gray-500 pb-4 mb-8">Experience</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">

@@ -24,7 +24,7 @@ const Education = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-gray-800 to-black text-white">
+    <div id = "education"className="bg-gradient-to-b from-gray-800 to-black text-white">
       <div className="container px-4 py-8 mx-auto">
         <h2 className="text-4xl font-bold border-b-4 border-gray-500 pb-4 mb-8">Education</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
