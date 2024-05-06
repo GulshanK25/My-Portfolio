@@ -25,19 +25,17 @@ const Education = () => {
 
   return (
     <div className="bg-gradient-to-b from-gray-800 to-black text-white">
-      <div className="container">
-        <h2 className="text-4xl font-bold inline border-b-4 border-gray-500">Education</h2>
-        <p className="py-6">My educational background</p>
-
+      <div className="container px-4 py-8 mx-auto">
+        <h2 className="text-4xl font-bold border-b-4 border-gray-500 pb-4 mb-8">Education</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {educationItems.map(({ id, institution, degree, year, imageSrc, style }) => (
-            <div key={id} className={`shadow-md hover:scale-105 duration-500 py-4 rounded-lg ${style}`}>
-              <div className="flex items-center justify-between mb-4">
+            <div key={id} className={`shadow-md hover:scale-105 duration-500 rounded-lg ${style}`}>
+              <div className="flex flex-col items-center justify-center mb-4">
+                <img src={imageSrc} alt={institution} className="h-20 w-auto mb-2" />
                 <h3 className="text-xl font-semibold text-gray-300">{institution}</h3>
               </div>
-              <img src={imageSrc} alt={institution} className="h-20 w-auto mx-auto mb-4" />
-              <p className="text-gray-400 mb-2">{degree}</p>
-              <p className="text-gray-400">{year}</p>
+              <p className="text-center text-gray-400 mb-2">{degree}</p>
+              <p className="text-center text-gray-400">{year}</p>
             </div>
           ))}
         </div>
