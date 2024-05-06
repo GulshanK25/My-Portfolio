@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillPersonLinesFill } from "react-icons/bs";
 
 const SocialLinks = () => {
-  const [showLinks, setShowLinks] = useState(false);
-
   const links = [
     {
       id: 1,
@@ -14,6 +12,7 @@ const SocialLinks = () => {
           LinkedIn <FaLinkedin size={30} />
         </>
       ),
+      
       href: "https://linkedin.com/in/gulshan-kumar-546462238",
       style: "rounded-tr-md",
     },
@@ -49,14 +48,35 @@ const SocialLinks = () => {
   ];
 
   return (
-    <div className="lg:hidden fixed bottom-5 right-5 z-50">
-      <button
-        className="bg-cyan-950 text-white rounded-full p-3"
-        onClick={() => setShowLinks(!showLinks)}
-      >
-        {showLinks ? "Hide" : "Show"} Links
-      </button>
-      {showLinks && (
+    <>
+      {/* For larger screens (laptops and desktops) */}
+      <div className="hidden lg:flex flex-col top-[35%] left-0 fixed">
+        <ul>
+          {links.map(({ id, child, href, style, download }) => (
+            <li
+              key={id}
+              className={
+                "flex justify-between items-center w-40 h-14 px-4 ml-[-100px] hover:ml-[-10px] hover:rounded-md duration-300 bg-cyan-950" +
+                " " +
+                style
+              }
+            >
+              <a
+                href={href}
+                className="flex justify-between items-center w-full text-white"
+                download={download}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {child}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* For smaller screens (mobile devices) */}
+      <div className="lg:hidden fixed bottom-5 right-5 z-50">
         <ul className="flex flex-col gap-2 bg-cyan-950 p-4 rounded-md">
           {links.map(({ id, child, href, style, download }) => (
             <li key={id}>
@@ -72,8 +92,8 @@ const SocialLinks = () => {
             </li>
           ))}
         </ul>
-      )}
-    </div>
+      </div>
+    </>
   );
 };
 
