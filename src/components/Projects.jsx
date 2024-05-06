@@ -55,14 +55,12 @@ const Projects = () => {
   ];
 
   return (
-    <div id = "projects" className="bg-gradient-to-b from-gray-800 to-black w-full text-white">
-      <div className="max-w-screen-lg mx-auto p-4 flex flex-col justify-center">
-        <div className="pb-8">
-          <h2 className="text-4xl font-bold inline border-b-4 border-gray-500">Projects</h2>
-          <p className="py-2">Check out some of my projects</p>
-        </div>
+    <div className="bg-gradient-to-b from-gray-800 to-black text-white">
+      <div className="container">
+        <h2 className="text-4xl font-bold inline border-b-4 border-gray-500">Projects</h2>
+        <p className="py-2">Check out some of my projects</p>
 
-        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 px-4">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {myprojects.map(({ id, name, src, description, githubLink }) => (
             <div key={id} className="shadow-md shadow-gray-600 rounded-lg">
               <img src={src} alt={name} className="rounded-md duration-200 hover:scale-105" />
@@ -78,5 +76,4 @@ const Projects = () => {
     </div>
   );
 };
-
 export default Projects;
