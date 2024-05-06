@@ -5,6 +5,7 @@ import search from '../assets/search.png';
 import piggame from '../assets/piggame.png';
 import bookshop from '../assets/bookshop.png';
 import netflix from '../assets/netflix.png';
+import portfolio from '../assets/portfolio.jpg';
 
 const Projects = () => {
   const myprojects = [
@@ -49,6 +50,14 @@ const Projects = () => {
       src: netflix,
       description: "A netflix landing page made while i was learning about css html and javascript.",
       githubLink: "https://github.com/GulshanK25/netflixclone",
+    },
+
+    {
+      id: 7,
+      name: "Portfolio",
+      src: portfolio,
+      description: "A Portfolio design with react ",
+      githubLink: "https://github.com/GulshanK25/My-Portfolio",
     },
     
 
