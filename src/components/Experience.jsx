@@ -5,6 +5,7 @@ import css from "../assets/css.png";
 import javascript from "../assets/javascript.png";
 import reactImage from "../assets/react.png";
 import nextjs from "../assets/nextjs.png";
+import node from "../assets/node.png";
 import graphql from "../assets/graphql.png";
 import github from "../assets/github.png";
 import tailwind from "../assets/tailwind.png";
@@ -12,6 +13,8 @@ import python from "../assets/Python.jpg";
 import java from "../assets/Java.png";
 import mongodb from "../assets/Mongodb.png";
 import mysql from "../assets/mysqllogo.png";
+import angular from "../assets/Angular.png";
+import postgress from "../assets/postgress.png";
 
 const Experience = () => {
   const techs = [
@@ -53,42 +56,62 @@ const Experience = () => {
     },
     {
       id: 7,
+      src: node,
+      title: "Node",
+      style: "shadow-green-300",
+    },
+    
+    {
+      id: 8,
       src: graphql,
       title: "GraphQL",
       style: "shadow-pink-400",
     },
     {
-      id: 8,
+      id: 9,
       src: github,
       title: "GitHub",
       style: "shadow-gray-400",
     },
     {
-      id: 9,
+      id: 10,
       src: python,
       title: "python",
       style: "shadow-cyan-800",
     },
     {
-      id: 10,
+      id: 11,
       src: java,
       title: "java",
       style: "shadow-gray-700",
     },
     {
-      id: 11,
+      id: 12,
       src: mongodb,
       title: "mongodb",
       style: "shadow-green-400",
     },
     
     {
-      id: 12,
+      id: 13,
       src: mysql,
       title: "MySQL",
       style: "shadow-blue-400",
     },
+
+    {
+      id: 14,
+      src: angular,
+      title: "Angular",
+      style: "shadow-red-400",
+    },
     
+    {
+      id: 15,
+      src: postgress,
+      title: "postgress",
+      style: "shadow-blue-400",
+    },
     
     
 
