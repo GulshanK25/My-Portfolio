@@ -6,6 +6,7 @@ import piggame from '../assets/piggame.png';
 import bookshop from '../assets/bookshop.png';
 import netflix from '../assets/netflix.png';
 import portfolio from '../assets/portfolio.jpg';
+import Student_connect from '../assets/sm.jpeg';
 
 const Projects = () => {
   const myprojects = [
@@ -51,7 +52,6 @@ const Projects = () => {
       description: "A netflix landing page made while i was learning about css html and javascript.",
       githubLink: "https://github.com/GulshanK25/netflixclone",
     },
-
     {
       id: 7,
       name: "Portfolio",
@@ -59,21 +59,26 @@ const Projects = () => {
       description: "A Portfolio design with react ",
       githubLink: "https://github.com/GulshanK25/My-Portfolio",
     },
-    
-
+    {
+      id: 8,
+      name: "HKR STUDENT CONNNECT",
+      src: Student_connect,
+      description: "A Social media app which was part of full stack project in my Second year based on React ",
+      githubLink: "https://github.com/HKR-StudentConnect",
+    },
   ];
 
   return (
-    <div id = "projects"className="bg-gradient-to-b from-gray-800 to-black text-white">
+    <div id="projects" className="bg-gradient-to-b from-gray-800 to-black text-white">
       <div className="container px-4 py-8 mx-auto">
         <h2 className="text-4xl font-bold border-b-4 border-gray-500 pb-4 mb-8">Projects</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {myprojects.map(({ id, name, src, description, githubLink }) => (
-            <div key={id} className="shadow-md hover:scale-105 duration-500 rounded-lg">
-              <img src={src} alt={name} className="rounded-md duration-200 hover:scale-105" />
+            <div key={id} className="shadow-md hover:scale-105 duration-500 rounded-lg border border-gray-500">
+              <img src={src} alt={name} className="rounded-t-md duration-200 hover:scale-105 w-full" />
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">{name}</h3>
-                <p className="text-gray-600 mb-4">{description}</p>
+                <p className="text-gray-400 mb-4">{description}</p>
                 <a href={githubLink} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">GitHub Link</a>
               </div>
             </div>
