@@ -1,5 +1,4 @@
 import React from "react";
-
 import html from "../assets/html.png";
 import css from "../assets/css.png";
 import javascript from "../assets/javascript.png";
@@ -116,7 +115,6 @@ const Experience = () => {
     
 
   ];
-
   return (
     <div id = "experience" className="bg-gradient-to-b from-gray-800 to-black text-white">
       <div className="container px-4 py-8 mx-auto">

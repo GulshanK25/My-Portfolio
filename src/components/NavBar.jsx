@@ -27,18 +27,22 @@ const NavBar = () => {
     },
     {
       id: 3,
-      link: "projects",
+      link: "workexperience",
     },
     {
       id: 4,
-      link: "experience",
+      link: "projects",
     },
     {
       id: 5,
-      link: "education",
+      link: "experience",
     },
     {
       id: 6,
+      link: "education",
+    },
+    {
+      id: 7,
       link: "contact",
     },
   ];

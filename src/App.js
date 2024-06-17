@@ -6,6 +6,7 @@ import Home from "./components/Home.jsx";
 import NavBar from "./components/NavBar.jsx";
 import Projects from "./components/Projects.jsx";
 import SocialLinks from "./components/SocialLinks.jsx";
+import Workexperience from "./components/Workexperience.jsx";
 
 function App() {
   return (
@@ -13,11 +14,13 @@ function App() {
       <NavBar />
       <Home />
       <About />
+      <Workexperience />
       <Projects/>
       <Experience />
       <Education />
       <Contact />
       <SocialLinks />
+      
     </div>
   );
 }
