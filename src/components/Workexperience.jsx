@@ -8,7 +8,7 @@ const Workexperience = () => {
       id: 1,
       Organization: "MAX HAMBURGER",
       Role: "Part-time worker in the kitchen of MAX Kristianstad",
-      Period: "April 2023 - June 2024",
+      Period: "April 2023 - Present",
       imageSrc: MAX,
       style: "shadow-red-400",
       details: "Worked on preparing food, customer service and learned how to handle things in pressure situation."
@@ -17,7 +17,7 @@ const Workexperience = () => {
       id: 2,
       Organization: "DUN & BRADSTREET",
       Role: "Tech intern",
-      Period: "June 2024 - Present",
+      Period: "June 2024 - August 2024",
       imageSrc: DANDB,
       style: "shadow-red-400",
       details: "Tech intern working on Angular for frontend development."
