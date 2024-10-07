@@ -1,66 +1,34 @@
 import React from 'react';
-import recipeapp from '../assets/recipeapp.png';
 import mindmed from '../assets/mindmed.png';
-import search from '../assets/search.png';
 import piggame from '../assets/piggame.png';
-import bookshop from '../assets/bookshop.png';
-import netflix from '../assets/netflix.png';
 import portfolio from '../assets/portfolio.jpg';
 import Student_connect from '../assets/sm.jpeg';
 
-const Projects = () => {
+  const Projects = () => {
   const myprojects = [
     {
       id: 1,
-      name: "Recipe App",
-      src: recipeapp,
-      description: "A recipe app that allows users to search for recipes, view ingredients, and instructions.",
-      githubLink: "https://github.com/GulshanK25/recipeeApp",
-    },
-    {
-      id: 2,
-      name: "Search App",
-      src: search,
-      description: "A search app that allows users to search for content across multiple sources.",
-      githubLink: "https://github.com/GulshanK25/SearchCon.com",
-    },
-    {
-      id: 3,
-      name: "Bookshop",
-      src: bookshop,
-      description: "An online bookshop where users can browse and purchase books.",
-      githubLink: "https://github.com/GulshanK25/Book_shop",
-    },
-    {
-      id: 4,
       name: "Pig Game",
       src: piggame,
       description: "A simple dice game where players take turns rolling a dice and accumulate points.",
       githubLink: "https://github.com/GulshanK25/Piggame",
     },
     {
-      id: 5,
+      id: 2,
       name: "MindMed",
       src: mindmed,
       description: "A meditation and mindfulness app with guided meditation sessions and relaxation techniques.",
       githubLink: "https://github.com/GulshanK25/mindmedproject",
     },
     {
-      id: 6,
-      name: "Netflix clone",
-      src: netflix,
-      description: "A netflix landing page made while i was learning about css html and javascript.",
-      githubLink: "https://github.com/GulshanK25/netflixclone",
-    },
-    {
-      id: 7,
-      name: "Portfolio",
+      id: 3,
+      name: "Portfolio", 
       src: portfolio,
       description: "A Portfolio design with react ",
       githubLink: "https://github.com/GulshanK25/My-Portfolio",
     },
     {
-      id: 8,
+      id: 4,
       name: "HKR STUDENT CONNNECT",
       src: Student_connect,
       description: "A Social media app which was part of full stack project in my Second year based on React ",
