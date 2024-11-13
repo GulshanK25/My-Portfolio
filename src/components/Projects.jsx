@@ -3,6 +3,7 @@ import mindmed from '../assets/mindmed.png';
 import piggame from '../assets/piggame.png';
 import portfolio from '../assets/portfolio.jpg';
 import Student_connect from '../assets/sm.jpeg';
+import softhouse from '../assets/softhouse_logo.jpeg'
 
   const Projects = () => {
   const myprojects = [
@@ -34,6 +35,15 @@ import Student_connect from '../assets/sm.jpeg';
       description: "A Social media app which was part of full stack project in my Second year based on React ",
       githubLink: "https://github.com/HKR-StudentConnect",
     },
+    {
+      id: 4,
+      name: "Lunchmate For Softhouse",
+      src: softhouse,
+      description: "An Mobile application done with SOfthouse Karlskrona. Its main purpose was to give a new shape for social dining, within the office collegues.",
+      githubLink: "https://github.com/GulshanK25/LunchMAte",
+    },
+    
+
   ];
 
   return (
