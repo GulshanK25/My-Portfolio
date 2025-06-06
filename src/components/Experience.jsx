@@ -3,7 +3,6 @@ import html from "../assets/html.png";
 import css from "../assets/css.png";
 import javascript from "../assets/javascript.png";
 import reactImage from "../assets/react.png";
-import nextjs from "../assets/nextjs.png";
 import node from "../assets/node.png";
 import graphql from "../assets/graphql.png";
 import github from "../assets/github.png";
@@ -14,6 +13,9 @@ import mongodb from "../assets/Mongodb.png";
 import mysql from "../assets/mysqllogo.png";
 import angular from "../assets/Angular.png";
 import postgress from "../assets/postgress.png";
+import kotlin from "../assets/Koltin.jpg";
+import jetpack from "../assets/jetpack compose.png";
+
 
 const Experience = () => {
   const techs = [
@@ -49,10 +51,11 @@ const Experience = () => {
     },
     {
       id: 6,
-      src: nextjs,
-      title: "Next JS",
-      style: "shadow-white",
+      src: kotlin,
+      title: "Kotlin",
+      style: "shadow-purple-400",
     },
+
     {
       id: 7,
       src: node,
@@ -75,19 +78,19 @@ const Experience = () => {
     {
       id: 10,
       src: python,
-      title: "python",
+      title: "Python",
       style: "shadow-cyan-800",
     },
     {
       id: 11,
       src: java,
-      title: "java",
+      title: "Java",
       style: "shadow-gray-700",
     },
     {
       id: 12,
       src: mongodb,
-      title: "mongodb",
+      title: "Mongodb",
       style: "shadow-green-400",
     },
     
@@ -108,8 +111,14 @@ const Experience = () => {
     {
       id: 15,
       src: postgress,
-      title: "postgress",
+      title: "Postgress",
       style: "shadow-blue-400",
+    },
+    {
+      id: 16,
+      src: jetpack,
+      title: "Jetpack Compose",
+      style: "shadow-blue-200",
     },
     
     

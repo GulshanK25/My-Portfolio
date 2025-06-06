@@ -16,7 +16,7 @@ const Home = () => {
           <p className="text-gray-500 py-4 max-w-md">
             A student aiming his carrer in full stack development
             having current experience in technology like
-            node.js, html, java, python and much more
+            node.js, Kotlin, java, python and much more
           </p>
         </div>
 

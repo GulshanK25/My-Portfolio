@@ -4,6 +4,7 @@ import piggame from '../assets/piggame.png';
 import portfolio from '../assets/portfolio.jpg';
 import Student_connect from '../assets/sm.jpeg';
 import softhouse from '../assets/softhouse_logo.jpeg'
+import smarthouse from '../assets/smarthouse.jpg'
 
   const Projects = () => {
   const myprojects = [
@@ -36,14 +37,19 @@ import softhouse from '../assets/softhouse_logo.jpeg'
       githubLink: "https://github.com/HKR-StudentConnect",
     },
     {
-      id: 4,
+      id: 5,
       name: "Lunchmate For Softhouse",
       src: softhouse,
       description: "An Mobile application done with SOfthouse Karlskrona. Its main purpose was to give a new shape for social dining, within the office collegues.",
       githubLink: "https://github.com/GulshanK25/LunchMAte",
     },
-    
-
+    {
+      id: 6,
+      name: "Smarthouse app",
+      src: smarthouse,
+      description: "An Android application part of My final year project. The app purpose is to have a complete smarthouse solution in your pcoket made with jetpack compose kotlin and retrofit.",
+      githubLink: "https://github.com/GulshanK25/Mobile-Frontend-",
+    },
   ];
 
   return (

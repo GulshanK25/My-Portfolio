@@ -9,7 +9,7 @@ const About = () => {
         </div>
 
         <p className="text-lg leading-loose">
-          Hi there! My name is Gulshan Kumar, and I'm a 22-year-old enthusiast with a passion for technology
+          Hi there! My name is Gulshan Kumar, and I'm a 23-year-old enthusiast with a passion for technology
           and software engineering. I embarked on my journey in this field driven by a genuine interest in
           development and coding, inspired by both personal experiences and familial influences.
         </p>
