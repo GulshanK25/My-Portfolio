@@ -1,7 +1,7 @@
 import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
 import Education from "./components/Education.jsx";
-import Experience from "./components/Experience.jsx";
+import Skillset from "./components/Skillset.jsx";
 import Home from "./components/Home.jsx";
 import NavBar from "./components/NavBar.jsx";
 import Projects from "./components/Projects.jsx";
@@ -16,7 +16,7 @@ function App() {
       <About />
       <Workexperience />
       <Projects/>
-      <Experience />
+      <Skillset />
       <Education />
       <Contact />
       <SocialLinks />

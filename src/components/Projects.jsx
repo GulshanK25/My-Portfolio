@@ -47,7 +47,7 @@ import smarthouse from '../assets/smarthouse.jpg'
       id: 6,
       name: "Smarthouse app",
       src: smarthouse,
-      description: "An Android application part of My final year project. The app purpose is to have a complete smarthouse solution in your pcoket made with jetpack compose kotlin and retrofit.",
+      description: "An Android application part of My final year project. The purpose of the app is to have a complete smarthouse solution in your pcoket made with jetpack compose kotlin and retrofit.",
       githubLink: "https://github.com/GulshanK25/Mobile-Frontend-",
     },
   ];
