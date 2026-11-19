@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 550" role="img"><defs>
+      <linearGradient id="bgp" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#06252e"/><stop offset="1" stop-color="#133d53"/></linearGradient>
+      <radialGradient id="glowp"><stop offset="0" stop-color="#34d399" stop-opacity=".33"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></radialGradient>
+      <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#000" flood-opacity=".24"/></filter>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+    </defs>
+    <rect width="1200" height="550" fill="url(#bgp)"/>
+    <rect width="1200" height="550" fill="url(#grid)"/>
+    <circle cx="950" cy="195" r="420" fill="url(#glowp)"/>
+    <circle cx="120" cy="470" r="260" fill="url(#glowp)" opacity=".33"/>
+    
+  <g opacity=".35" stroke="#67e8f9" fill="none"><circle cx="1038" cy="146" r="130" stroke-width="3"/><circle cx="1038" cy="146" r="98" stroke-width="3"/><path d="M908 146H1168M1038 16V276" stroke-width="2"/><ellipse cx="1038" cy="146" rx="48" ry="130" stroke-width="2"/></g>
+  <g filter="url(#sh)">
+    <rect x="115" y="67" width="830" height="409" rx="24" fill="#f7fafc"/>
+    <path d="M115 91Q115 67 139 67H921Q945 67 945 91V136H115Z" fill="#d9f3f3"/>
+    <circle cx="145" cy="105" r="7" fill="#99b5be"/><circle cx="167" cy="105" r="7" fill="#99b5be"/><circle cx="189" cy="105" r="7" fill="#99b5be"/>
+    <rect x="318" y="92" width="455" height="25" rx="12" fill="#fff" stroke="#cbd5e1"/>
+    <path d="M115 136H945" stroke="#b5d5df"/>
+    <rect x="115" y="137" width="830" height="338" rx="0" fill="#effbfb"/>
+    <path d="M115 444H945V458Q945 475 928 475H132Q115 475 115 458Z" fill="#effbfb"/>
+    <text x="175" y="200" font-family="Arial,sans-serif" font-size="37" font-weight="800" fill="#075985">Permit<tspan fill="#10b981">To</tspan></text>
+    <text x="175" y="255" font-family="Arial,sans-serif" font-size="29" font-weight="700" fill="#123c50">Your next step,</text>
+    <text x="175" y="289" font-family="Arial,sans-serif" font-size="29" font-weight="700" fill="#123c50">made simpler.</text>
+    <rect x="176" y="332" width="233" height="51" rx="14" fill="#0f766e"/>
+    <text x="200" y="365" font-family="Arial,sans-serif" font-size="22" font-weight="600" fill="#fff">Book consultation</text>
+    <g transform="translate(550 178)">
+      <circle cx="158" cy="115" r="126" fill="#d1fae5"/>
+      <circle cx="158" cy="115" r="93" fill="none" stroke="#14b8a6" stroke-width="5"/>
+      <ellipse cx="158" cy="115" rx="45" ry="93" fill="none" stroke="#0d9488" stroke-width="5"/>
+      <path d="M65 115H251M77 72H238M77 159H238" fill="none" stroke="#0d9488" stroke-width="4"/>
+      <g fill="#06b6d4" stroke="#fff" stroke-width="3"><path d="M111 60a24 24 0 0 0-24 24c0 18 24 46 24 46s24-28 24-46a24 24 0 0 0-24-24Z"/><path d="M214 101a24 24 0 0 0-24 24c0 18 24 46 24 46s24-28 24-46a24 24 0 0 0-24-24Z"/></g>
+      <g fill="#fff"><circle cx="111" cy="84" r="7"/><circle cx="214" cy="125" r="7"/></g>
+    </g>
+  </g>
+  <g opacity=".88" fill="#5eead4"><circle cx="1003" cy="373" r="7"/><circle cx="1075" cy="404" r="4"/><circle cx="1046" cy="325" r="6"/></g>
+</svg>

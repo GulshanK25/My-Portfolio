@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 550" role="img"><defs>
+      <linearGradient id="bgh" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#132c37"/><stop offset="1" stop-color="#102438"/></linearGradient>
+      <radialGradient id="glowh"><stop offset="0" stop-color="#f59e0b" stop-opacity=".33"/><stop offset="1" stop-color="#f59e0b" stop-opacity="0"/></radialGradient>
+      <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#000" flood-opacity=".24"/></filter>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+    </defs>
+    <rect width="1200" height="550" fill="url(#bgh)"/>
+    <rect width="1200" height="550" fill="url(#grid)"/>
+    <circle cx="950" cy="195" r="420" fill="url(#glowh)"/>
+    <circle cx="120" cy="470" r="260" fill="url(#glowh)" opacity=".33"/>
+    
+ <g filter="url(#sh)">
+   <rect x="90" y="81" width="690" height="390" rx="25" fill="#142c40" stroke="#527a91" stroke-width="3"/>
+   <rect x="90" y="81" width="690" height="62" rx="25" fill="#1d3e54"/>
+   <text x="140" y="119" fill="#d1fae5" font-family="Arial,sans-serif" font-weight="700" font-size="24">Home Dashboard</text>
+   <circle cx="726" cy="114" r="9" fill="#34d399"/>
+   <rect x="120" y="166" width="270" height="262" rx="20" fill="#163c53"/>
+   <rect x="410" y="166" width="338" height="111" rx="20" fill="#174154"/>
+   <rect x="410" y="293" width="338" height="135" rx="20" fill="#174154"/>
+   <path d="M163 288L250 208L345 288" fill="none" stroke="#fb923c" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+   <path d="M185 275V376H325V275" fill="none" stroke="#a7f3d0" stroke-width="9" stroke-linejoin="round"/>
+   <rect x="244" y="327" width="33" height="49" rx="7" fill="#fbbf24"/>
+   <circle cx="300" cy="321" r="10" fill="#5eead4"/>
+   <text x="446" y="206" fill="#c5e7f0" font-family="Arial,sans-serif" font-size="18">Enhanced counter</text>
+   <text x="446" y="252" fill="#fcd34d" font-family="Arial,sans-serif" font-weight="700" font-size="42">02 / 05</text>
+   <circle cx="650" cy="225" r="29" fill="#0e7490"/>
+   <path d="M638 225H663M652 213V238" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+   <text x="447" y="332" fill="#c5e7f0" font-family="Arial,sans-serif" font-size="18">Devices connected</text>
+   <path d="M456 374H702" stroke="#8ab0bf" stroke-width="6" stroke-linecap="round" opacity=".35"/>
+   <circle cx="481" cy="374" r="15" fill="#f59e0b"/><circle cx="582" cy="374" r="15" fill="#34d399"/><circle cx="688" cy="374" r="15" fill="#38bdf8"/>
+ </g>
+ <g filter="url(#sh)">
+   <circle cx="952" cy="256" r="136" fill="#263c49" stroke="#f59e0b" stroke-width="5"/>
+   <circle cx="952" cy="256" r="105" fill="none" stroke="#fed7aa" stroke-opacity=".55" stroke-width="3" stroke-dasharray="6 12"/>
+   <path d="M899 257L949 207L1002 257" stroke="#fbbf24" stroke-width="11" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+   <path d="M915 250V308H984V250" fill="none" stroke="#ccfbf1" stroke-width="9"/>
+   <rect x="944" y="280" width="19" height="29" rx="4" fill="#fbbf24"/>
+ </g>
+ <g fill="#34d399"><circle cx="887" cy="118" r="8"/><circle cx="1110" cy="356" r="10"/><circle cx="1069" cy="130" r="7"/></g>
+</svg>

@@ -1,30 +1,16 @@
 import React from "react";
+import { profile } from "../data/portfolioData";
 
-const About = () => {
-  return (
-    <div id="about" className="w-full h-screen bg-gradient-to-b from-gray-800 to-black text-white">
-      <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
-        <div className="pb-8">
-          <h2 className="text-4xl font-bold inline border-b-4 border-gray-500">About Me</h2>
-        </div>
-
-        <p className="text-lg leading-loose">
-          Hi there! My name is Gulshan Kumar, and I'm a 23-year-old enthusiast with a passion for technology
-          and software engineering. I embarked on my journey in this field driven by a genuine interest in
-          development and coding, inspired by both personal experiences and familial influences.
-        </p>
-        <br />
-
-        <p className="text-lg leading-loose">
-          As I continue my academic pursuit, I find myself increasingly captivated by the vast and ever-evolving
-          landscape of technology. I thrive on tackling new challenges, viewing them as opportunities for growth
-          and innovation. I believe in the importance of not only working hard but also working smart, employing
-          creativity and determination in every endeavor.
-        </p>
+const About = () => (
+  <section id="about" className="w-full bg-gradient-to-b from-gray-800 to-black text-white py-16 md:py-24">
+    <div className="max-w-screen-lg p-4 mx-auto">
+      <h2 className="text-4xl font-bold inline border-b-4 border-gray-500">About Me</h2>
+      <div className="mt-10 space-y-6">
+        {profile.about.map((paragraph, index) => (
+          <p key={index} className="text-lg text-gray-300 leading-loose">{paragraph}</p>
+        ))}
       </div>
     </div>
-  );
-};
-
-
+  </section>
+);
 export default About;

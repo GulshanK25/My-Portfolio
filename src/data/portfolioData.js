@@ -1,0 +1,131 @@
+// Portfolio details are kept in one place so the UI and a future AI assistant
+// can use the same reviewed facts. Only publish information you're comfortable sharing.
+export const profile = {
+  name: "Gulshan Kumar",
+  headline: "Software Engineer & AI Developer",
+  intro: "I'm a Software Engineering master's student at Blekinge Institute of Technology, with experience in full-stack development and a growing focus on AI engineering. I enjoy building practical solutions, from web applications to AI-powered tools, and exploring how new technologies can solve real-world problems.",
+  about: [
+    "I'm a software developer currently pursuing a Master's in Software Engineering at Blekinge Institute of Technology (BTH), Sweden. I completed my Bachelor's in Software Development at Kristianstad University in 2025.",
+    "My work spans frontend development, backend systems, Android applications and applied AI. During my internship at Dun & Bradstreet, I worked with Angular and TypeScript, including accessibility-focused frontend development. I also built and deployed a consultancy website for a client.",
+    "Recently, I've been developing AI tools with retrieval-augmented generation, local language models and LangGraph. I enjoy following a problem from requirements and architecture through implementation, testing and deployment."
+  ],
+  github: "https://github.com/GulshanK25",
+  linkedin: "https://linkedin.com/in/gulshan-kumar-546462238",
+  email: "gulshan.chhablani@gmail.com",
+  resume: "/Gulshan Kumar CV.pdf"
+};
+
+export const education = [
+  {
+    id: "bth", institution: "Blekinge Institute of Technology (BTH)",
+    degree: "Master's in Software Engineering", years: "2025 - Present",
+    detail: "Graduate studies in software engineering, quality, architecture and software evolution.", logo: "bth"
+  },
+  {
+    id: "hkr", institution: "Kristianstad University",
+    degree: "Bachelor's in Software Development", years: "2022 - 2025",
+    detail: "Graduated in June 2025. Thesis: Android intent security and inter-app communication.", logo: "hkr"
+  },
+  {
+    id: "szabist", institution: "SZABIST",
+    degree: "Earlier Computer Science studies", years: "2021 - 2022",
+    detail: "Undergraduate studies before continuing my education in Sweden.", logo: "szabist"
+  }
+];
+
+export const experience = [
+  {
+    id: "permitto", organization: "PermitTo Consultancy",
+    role: "Freelance Web Developer", period: "2026",
+    details: "Developed and deployed a multilingual consultancy website with Next.js, React, TypeScript and Tailwind CSS, including contact-form integration, responsive design and production hosting.",
+    logo: "permitto", link: "https://permitto.eu/"
+  },
+  {
+    id: "dnb", organization: "Dun & Bradstreet",
+    role: "Frontend Development Intern", period: "June 2024 - August 2024",
+    details: "Worked with Angular, TypeScript and Angular Material, with attention to accessibility and frontend user experience.", logo: "dnb"
+  },
+  {
+    id: "max", organization: "MAX Burgers, Kristianstad",
+    role: "Part-time Team Member", period: "April 2023 - Present",
+    details: "Developed teamwork, time management and customer-service skills in a fast-paced workplace.", logo: "max"
+  }
+];
+
+export const projectCategories = {
+  ai: "AI & ML",
+  engineering: "Software Engineering",
+  fullStack: "Full-Stack",
+  mobile: "Mobile Development",
+};
+
+export const projects = [
+  {
+    id: "review", name: "AI Code Review & Test Generation Agent", category: "AI / Software Engineering", featured: true,
+    filterCategories: ["ai", "engineering"],
+    description: "Reviews Python code changes locally, cites evidence for its findings, and suggests pytest tests that can be validated in Docker.",
+    tech: ["Python", "LangGraph", "Ollama", "pytest", "Docker"],
+    githubLink: "https://github.com/GulshanK25/github-code-review", image: "review"
+  },
+  {
+    id: "rag", name: "Website RAG Assistant", category: "Applied AI", featured: true,
+    filterCategories: ["ai"],
+    description: "Answers questions about a website by crawling its pages, retrieving relevant passages from ChromaDB, and generating responses locally with Llama 3.",
+    tech: ["Python", "LangGraph", "ChromaDB", "Llama 3", "Streamlit"],
+    githubLink: "https://github.com/GulshanK25/Scrapper-chatbox", image: "rag"
+  },
+  {
+    id: "permitto", name: "PermitTo Consultancy", category: "Client Website", featured: true,
+    filterCategories: ["fullStack"],
+    description: "Built and deployed a responsive, multilingual website for a consultancy, with a contact form for client inquiries.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    githubLink: "https://github.com/8bitscode/nordic-consultancy", liveLink: "https://permitto.eu/", image: "permitto"
+  },
+  {
+    id: "ha", name: "Home Assistant Software Evolution", category: "Software Engineering", featured: true,
+    filterCategories: ["engineering"],
+    description: "Improved the behavior of repeating counters in Home Assistant and contributed to testing, code quality, and frontend functionality.",
+    tech: ["Python", "TypeScript", "Testing", "Git"],
+    githubLink: "https://github.com/GulshanK25/home-assistant-core-ht26", image: "ha"
+  },
+  {
+    id: "lunchmate", name: "Lunchmate for Softhouse", category: "Android", featured: false,
+    filterCategories: ["mobile"],
+    description: "Android app developed in collaboration with Softhouse to support lunch planning and social dining between colleagues.",
+    tech: ["Kotlin", "Android", "Firebase"], githubLink: "https://github.com/GulshanK25/LunchMAte", image: "softhouse"
+  },
+  {
+    id: "smart", name: "Smart House App", category: "Android", featured: false,
+    filterCategories: ["mobile"],
+    description: "Kotlin and Jetpack Compose Android application developed as part of a smart-house system.",
+    tech: ["Kotlin", "Jetpack Compose"], githubLink: "https://github.com/GulshanK25/Mobile-Smarthouse", image: "smarthouse"
+  },
+  {
+    id: "connect", name: "HKR Student Connect", category: "Full Stack", featured: false,
+    filterCategories: ["fullStack"],
+    description: "Student-focused social platform developed as a full-stack university project.",
+    tech: ["React", "JavaScript"], githubLink: "https://github.com/HKR-StudentConnect", image: "student"
+  },
+  {
+    id: "mindmed", name: "MindMed", category: "Earlier Project", featured: false,
+    description: "Meditation and mindfulness application with guided relaxation features.",
+    tech: ["Application Development"], githubLink: "https://github.com/GulshanK25/mindmedproject", image: "mindmed"
+  },
+  {
+    id: "pig", name: "Pig Game", category: "Earlier Project", featured: false,
+    description: "Interactive dice game where players take turns rolling and accumulating points.",
+    tech: ["JavaScript"], githubLink: "https://github.com/GulshanK25/Piggame", image: "pig"
+  },
+  {
+    id: "portfolio", name: "Developer Portfolio", category: "Frontend", featured: false,
+    filterCategories: ["engineering"],
+    description: "Personal website built with React and Tailwind CSS.",
+    tech: ["React", "Tailwind CSS"], githubLink: "https://github.com/GulshanK25/My-Portfolio", image: "portfolio"
+  }
+];
+
+export const extraSkills = [
+  { category: "AI & ML", items: ["LangGraph", "RAG", "Ollama", "ChromaDB", "Sentence Transformers", "PyTorch", "TensorFlow", "scikit-learn"] },
+  { category: "Web & Backend", items: ["Next.js", "TypeScript", "Express", "FastAPI", "REST APIs"] },
+  { category: "Tools & Data", items: ["Docker", "Git", "Apache Spark", "Hadoop", "pytest"] }
+];

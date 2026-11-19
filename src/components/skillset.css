@@ -1,0 +1,30 @@
+/* Single blue-toned background from top to bottom, rather than fading to pure black. */
+.portfolio-skills-section {
+  background: linear-gradient(180deg, #1f2937 0%, #172334 48%, #101b2c 100%);
+}
+
+/* Same colored glow for the old logos and newly-added AI logos. */
+.portfolio-skill-card {
+  background-color: rgba(5, 10, 18, 0.52);
+  border-color: rgba(148, 163, 184, 0.14);
+  box-shadow: 0 3px 7px -3px var(--skill-accent);
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.portfolio-skill-card:hover,
+.portfolio-skill-card:focus-within {
+  transform: translateY(-5px) scale(1.035);
+  border-color: var(--skill-accent);
+  box-shadow: 0 0 0 1px var(--skill-accent), 0 10px 22px -6px var(--skill-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-skill-card,
+  .portfolio-skill-card > div {
+    transition: none;
+  }
+  .portfolio-skill-card:hover,
+  .portfolio-skill-card:focus-within {
+    transform: none;
+  }
+}

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 550" role="img"><defs>
+      <linearGradient id="bgr" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#091322"/><stop offset="1" stop-color="#18243f"/></linearGradient>
+      <radialGradient id="glowr"><stop offset="0" stop-color="#a78bfa" stop-opacity=".33"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
+      <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#000" flood-opacity=".24"/></filter>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+    </defs>
+    <rect width="1200" height="550" fill="url(#bgr)"/>
+    <rect width="1200" height="550" fill="url(#grid)"/>
+    <circle cx="950" cy="195" r="420" fill="url(#glowr)"/>
+    <circle cx="120" cy="470" r="260" fill="url(#glowr)" opacity=".33"/>
+    
+  <circle cx="1090" cy="84" r="150" fill="none" stroke="#a78bfa" stroke-opacity=".13" stroke-width="3"/>
+  <circle cx="1090" cy="84" r="106" fill="none" stroke="#a78bfa" stroke-opacity=".13" stroke-width="3"/>
+  <g filter="url(#sh)">
+    <rect x="95" y="70" width="635" height="405" rx="22" fill="#0c1729" stroke="#6b82a3" stroke-opacity=".63" stroke-width="2"/>
+    <rect x="95" y="70" width="635" height="62" rx="22" fill="#172744"/>
+    <path d="M95 108H730" stroke="#4b607d" stroke-opacity=".65"/>
+    <circle cx="130" cy="101" r="7" fill="#fb7185"/><circle cx="153" cy="101" r="7" fill="#fbbf24"/><circle cx="176" cy="101" r="7" fill="#4ade80"/>
+    <text x="220" y="108" font-family="Arial,sans-serif" font-size="22" fill="#c7d2fe" opacity=".85">review.py</text>
+    <text x="123" y="177" font-family="monospace" font-size="21" fill="#7990b2">def authorize(user):</text>
+    <rect x="118" y="198" width="586" height="52" rx="9" fill="#4b1c34" fill-opacity=".78"/>
+    <rect x="118" y="260" width="586" height="52" rx="9" fill="#0d4c43" fill-opacity=".78"/>
+    <text x="143" y="230" font-family="monospace" font-size="23" fill="#fda4af">− return bool(user)</text>
+    <text x="143" y="293" font-family="monospace" font-size="22" fill="#86efac">+ return user.role == "admin"</text>
+    <path d="M144 348H620" stroke="#54718b" stroke-width="9" opacity=".43" stroke-linecap="round"/>
+    <path d="M144 381H555" stroke="#54718b" stroke-width="9" opacity=".34" stroke-linecap="round"/>
+    <path d="M144 415H590" stroke="#54718b" stroke-width="9" opacity=".24" stroke-linecap="round"/>
+  </g>
+  <path d="M743 267C800 267 785 267 825 267" stroke="#b8a5fe" stroke-width="5" stroke-dasharray="9 12" fill="none" stroke-linecap="round"/>
+  <g filter="url(#sh)">
+    <circle cx="954" cy="256" r="133" fill="#202b4c" stroke="#a78bfa" stroke-width="4"/>
+    <path d="M954 163L1025 189V252C1025 308 998 342 954 363C910 342 883 308 883 252V189Z" fill="#a78bfa" fill-opacity=".22" stroke="#d8b4fe" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M921 261L946 286L993 233" fill="none" stroke="#86efac" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <rect x="807" y="421" width="310" height="58" rx="29" fill="#115e59" stroke="#5eead4" stroke-width="2"/>
+  <circle cx="845" cy="450" r="12" fill="#86efac"/>
+  <path d="M839 450L845 456L855 442" fill="none" stroke="#064e3b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="871" y="458" font-family="Arial,sans-serif" font-size="23" fill="#d1fae5" font-weight="600">Tests verified</text>
+</svg>
