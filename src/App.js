@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar.jsx";
 import Projects from "./components/Projects.jsx";
 import SocialLinks from "./components/SocialLinks.jsx";
 import Workexperience from "./components/Workexperience.jsx";
+import AIChatbot from "./components/AIChatbot.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Education />
       <Contact />
       <SocialLinks />
+      <AIChatbot />
       
     </div>
   );

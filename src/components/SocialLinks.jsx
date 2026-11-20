@@ -76,7 +76,7 @@ const SocialLinks = () => {
       </div>
 
       {/* For smaller screens (mobile devices) */}
-      <div className="lg:hidden fixed bottom-5 right-5 z-50">
+      <div className="lg:hidden fixed bottom-5 left-5 z-50">
         <ul className="flex flex-col gap-2 bg-cyan-950 p-4 rounded-md">
           {links.map(({ id, child, href, style, download }) => (
             <li key={id}>
