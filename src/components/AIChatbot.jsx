@@ -62,7 +62,7 @@ const AIChatbot = () => {
     } catch (error) {
       setMessages((current) => [...current, {
         role: "assistant",
-        content: "I couldn't reach the AI backend. If you're testing locally, start it with: python -m uvicorn backend.main:app --reload --port 8000. If this is the public site, the backend still needs to be deployed and connected.",
+        content: "Work In progress: Gulshan AI will be live soon, ",
         error: true,
       }]);
     } finally {
