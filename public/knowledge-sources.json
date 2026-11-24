@@ -1,0 +1,20 @@
+{
+  "github": {
+    "enabled": true,
+    "owners": ["GulshanK25"],
+    "discover_public": true,
+    "max_repos": 35,
+    "repositories": [
+      "GulshanK25/My-Portfolio",
+      "GulshanK25/Scrapper-chatbox",
+      "GulshanK25/github-code-review",
+      "GulshanK25/Mobile-Smarthouse",
+      "GulshanK25/LunchMAte",
+      "8bitscode/nordic-consultancy"
+    ]
+  },
+  "linkedin": {
+    "mode": "member_export_with_owner_approval",
+    "auto_sync": false
+  }
+}

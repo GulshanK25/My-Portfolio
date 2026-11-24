@@ -1,0 +1,62 @@
+{
+  "spokenLanguages": [
+    {
+      "language": "English",
+      "proficiency": "Professional Proficiency"
+    },
+    {
+      "language": "Swedish",
+      "proficiency": "Basic Proficiency"
+    }
+  ],
+  "provenance": "Spoken language levels were verified from the Languages section of an earlier supplied CV. Programming languages are confirmed by the publicly displayed portfolio skill cards and project technologies. The current project is verified by ongoing development of Ask Gulshan AI on 2026-11-23; this is a dated status record, not a live GitHub activity tracker.",
+  "programmingLanguages": [
+    "Python",
+    "Java",
+    "Kotlin",
+    "JavaScript",
+    "TypeScript"
+  ],
+  "currentProjects": [
+    {
+      "id": "portfolio-ai",
+      "name": "AI-Enhanced Developer Portfolio (Ask Gulshan AI)",
+      "status": "in_progress",
+      "asOf": "2026-11-23",
+      "description": "Building an AI-powered conversational feature inside the existing React developer portfolio, using FastAPI, LangGraph, GroqCloud, hybrid semantic search and read-only GitHub knowledge sync. Public AI backend deployment is still pending.",
+      "url": "https://github.com/GulshanK25/My-Portfolio",
+      "categories": [
+        "ai",
+        "software-engineering",
+        "full-stack"
+      ],
+      "repository": "GulshanK25/My-Portfolio",
+      "relationship": "Ask Gulshan AI is being integrated into the existing Developer Portfolio website, in the same My-Portfolio repository, not a separate standalone repository.",
+      "publicationNote": "The AI integration is under local development; this fact does not verify that the latest chatbot code is committed to the public GitHub repository or deployed on Netlify."
+    }
+  ],
+  "professionalDirection": {
+    "reviewedOn": "2026-11-23",
+    "status": "user_endorsed_professional_direction",
+    "careerGoals": [
+      "Build a career in software engineering, with a particular focus on AI engineering.",
+      "Develop intelligent applications that solve real-world problems.",
+      "Work on useful software products that combine established software engineering practices with modern AI technologies."
+    ],
+    "professionalInterests": [
+      "Applied AI and AI agents for practical software engineering problems.",
+      "Retrieval-augmented generation (RAG), information retrieval and question-answering systems.",
+      "AI-assisted code review, testing and developer tools.",
+      "Full-stack product development and software quality."
+    ],
+    "motivation": [
+      "Curious about how AI-powered knowledge tools work internally, not just how to use them.",
+      "Enjoys building working prototypes to understand an unfamiliar technology end to end."
+    ],
+    "projectLearnings": [
+      "While developing the Website RAG Assistant, learned that collecting website information alone is not enough: the retrieval stage must find the right passages for a question.",
+      "Experimented with ways to improve retrieval quality when the system failed to find information it had indexed."
+    ],
+    "disclosure": "Career goals and interests reflect Gulshan's approved professional direction, not a promise of a role, precise timeline, or confirmed future employment. Motivation and project lessons are based on his own reflection on the Website RAG Assistant."
+  }
+}

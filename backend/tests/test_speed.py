@@ -1,48 +1,33 @@
-"""Regression checks for the fast portfolio assistant path."""
-import time
-import httpx
-from fastapi.testclient import TestClient
+"""Groq failure must not block offline retrieval or repeated requests."""
 from backend.agent import PortfolioAssistant
-from backend.main import app
 
 
-def test_common_questions_skip_ollama(monkeypatch):
-    monkeypatch.setenv("USE_OLLAMA", "1")
-    monkeypatch.setenv("OLLAMA_FOR_SUMMARIES", "0")
-
-    def should_never_call(*_args, **_kwargs):
-        raise AssertionError("Common profile questions must not contact Ollama")
-
-    monkeypatch.setattr(PortfolioAssistant, "_ollama", should_never_call)
-    with TestClient(app) as client:
-        for q in ("Tell me about his work experience", "Who is Gulshan?", "What technologies and skills does Gulshan have?"):
-            res = client.post("/api/chat", json={"question": q})
-            assert res.status_code == 200
-            assert res.json()["mode"] == "profile_summary"
+def test_no_key_never_calls_network(monkeypatch):
+    monkeypatch.delenv('GROQ_API_KEY', raising=False)
+    def fail(*args, **kwargs):
+        raise AssertionError('Network should not be called without an API key')
+    monkeypatch.setattr('backend.agent.httpx.Client', fail)
+    result = PortfolioAssistant().ask('Tell me about Dun & Bradstreet')
+    assert result['mode'] == 'retrieval_only'
+    assert 'Dun & Bradstreet' in result['answer']
 
 
-def test_timeout_cooldown_avoids_repeated_llm_calls(monkeypatch):
-    monkeypatch.setenv("USE_OLLAMA", "1")
-    monkeypatch.setenv("OLLAMA_TIMEOUT_SECONDS", "2")
-    monkeypatch.setenv("OLLAMA_RETRY_COOLDOWN_SECONDS", "60")
+def test_failure_activates_short_cooldown(monkeypatch):
+    import httpx
+    monkeypatch.setenv('GROQ_API_KEY', 'dummy')
     calls = []
 
     class FakeClient:
-        def __init__(self, **kwargs):
-            pass
-        def __enter__(self):
-            return self
-        def __exit__(self, *_args):
-            return False
-        def post(self, *_args, **_kwargs):
-            calls.append(time.monotonic())
-            raise httpx.ReadTimeout("Simulated Ollama timeout")
+        def __init__(self, **kwargs): pass
+        def __enter__(self): return self
+        def __exit__(self, *args): pass
+        def post(self, *args, **kwargs):
+            calls.append(1)
+            raise httpx.ReadTimeout('simulated')
 
-    monkeypatch.setattr(httpx, "Client", FakeClient)
-    assistant = PortfolioAssistant()
-    first = assistant.ask("Explain the architecture of the Website RAG Assistant")
-    second = assistant.ask("Explain the architecture of the Website RAG Assistant")
+    monkeypatch.setattr('backend.agent.httpx.Client', FakeClient)
+    bot = PortfolioAssistant()
+    a = bot.ask('Describe the Website RAG Assistant')
+    b = bot.ask('Describe the Website RAG Assistant')
+    assert a['mode'] == b['mode'] == 'retrieval_only'
     assert len(calls) == 1
-    assert first["mode"] == "retrieval_only"
-    assert second["mode"] == "retrieval_only"
-    assert first["sources"]

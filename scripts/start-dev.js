@@ -7,6 +7,41 @@ const { spawn } = require('child_process');
 const root = path.resolve(__dirname, '..');
 const backendOnly = process.argv.includes('--backend-only');
 const windows = process.platform === 'win32';
+
+// Backend-only local secrets. Never pass these to the React development server.
+// An existing file is read on each "npm start", so no terminal exports are needed.
+function loadLocalBackendSecrets() {
+  const file = path.join(root, 'config', 'secrets.local.json');
+  if (!fs.existsSync(file)) return {};
+
+  let parsed;
+  try {
+    // PowerShell on some Windows versions writes a UTF-8 BOM.
+    parsed = JSON.parse(fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, ''));
+  } catch (_) {
+    console.error('[Local secrets] config/secrets.local.json is not valid JSON.');
+    process.exit(1);
+  }
+
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    console.error('[Local secrets] Expected a JSON object of environment variable names and strings.');
+    process.exit(1);
+  }
+
+  const secrets = {};
+  for (const [name, rawValue] of Object.entries(parsed)) {
+    if (!/^[A-Z_][A-Z0-9_]*$/.test(name) || typeof rawValue !== 'string') {
+      console.error('[Local secrets] All names must be environment variable names, with string values.');
+      process.exit(1);
+    }
+    // Empty values should not mask genuine server environment variables.
+    if (rawValue.trim()) secrets[name] = rawValue.trim();
+  }
+  console.log('[Local secrets] Backend configuration loaded from config/secrets.local.json.');
+  return secrets;
+}
+
+const localBackendSecrets = loadLocalBackendSecrets();
 const python = process.env.PORTFOLIO_PYTHON || path.join(
   root, '.venv', windows ? 'Scripts/python.exe' : 'bin/python'
 );
@@ -80,13 +115,17 @@ process.on('SIGTERM', () => stopAll(0));
 if (!backendOnly) {
   start('React :3000', process.execPath, [reactScript, 'start']);
 }
+// Enable both knowledge features by default during local development.
+// Setting either variable to '0' still disables it for troubleshooting.
+const semanticEnabled = process.env.ENABLE_SEMANTIC ?? '1';
+const githubSyncEnabled = process.env.GITHUB_AUTO_SYNC ?? '1';
 start('FastAPI :8000', python, ['-m', 'uvicorn', 'backend.main:app', '--reload', '--port', '8000'], {
-  USE_OLLAMA: process.env.USE_OLLAMA || '1',
-  OLLAMA_MODEL: process.env.OLLAMA_MODEL || 'llama3:latest',
-  OLLAMA_TIMEOUT_SECONDS: process.env.OLLAMA_TIMEOUT_SECONDS || '8',
-  OLLAMA_RETRY_COOLDOWN_SECONDS: process.env.OLLAMA_RETRY_COOLDOWN_SECONDS || '30',
-  OLLAMA_FOR_SUMMARIES: process.env.OLLAMA_FOR_SUMMARIES || '0',
+  GROQ_MODEL: process.env.GROQ_MODEL || 'openai/gpt-oss-20b',
+  ENABLE_SEMANTIC: semanticEnabled,
+  GITHUB_AUTO_SYNC: githubSyncEnabled,
+  ...localBackendSecrets,
 });
 
+console.log('Knowledge features: semantic=' + semanticEnabled + ', GitHub auto sync=' + githubSyncEnabled + '.');
 console.log('\nOpen http://localhost:3000 (FastAPI at http://localhost:8000).');
-console.log('Press Ctrl+C to stop the local servers. Ollama must be installed and running separately.\n');
+console.log('Press Ctrl+C to stop the local servers. Local backend secrets load from config/secrets.local.json when present.\n');
