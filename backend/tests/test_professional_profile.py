@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import json
 
-from backend.agent import PortfolioAssistant
+from backend.agent_legacy import PortfolioAssistant
 from backend.knowledge import KnowledgeStore
 
 
@@ -86,7 +86,7 @@ def test_model_receives_goals_as_verified_evidence(monkeypatch):
             sent.append(kwargs['json'])
             return FakeResponse()
 
-    monkeypatch.setattr('backend.agent.httpx.Client', FakeHTTP)
+    monkeypatch.setattr('backend.agent_legacy.httpx.Client', FakeHTTP)
     result = PortfolioAssistant().ask("What's Gulshan's career goal?")
     assert result['mode'] == 'groq'
     assert result['sources'][0]['id'] == 'profile:career_goals'

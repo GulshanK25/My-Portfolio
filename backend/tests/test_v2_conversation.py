@@ -6,7 +6,7 @@ import json
 
 from fastapi.testclient import TestClient
 
-from backend.agent import PortfolioAssistant
+from backend.agent_legacy import PortfolioAssistant
 from backend.main import app
 
 
@@ -71,7 +71,8 @@ def test_stream_endpoint_returns_chunks_and_sources_without_key(monkeypatch):
         assert "event: meta" in response.text
         assert "event: delta" in response.text
         assert "event: done" in response.text
-        assert "Education: Blekinge Institute of Technology" in response.text
+        assert "The AI service isn\'t available" in response.text
+        assert "mindmedproject" not in response.text
 
 
 def test_stream_sends_groq_deltas_instead_of_retrieval_bullets(monkeypatch):
@@ -97,7 +98,7 @@ def test_stream_sends_groq_deltas_instead_of_retrieval_bullets(monkeypatch):
             assert kwargs["headers"]["Authorization"] == "Bearer test-stream-key"
             return FakeStream()
 
-    monkeypatch.setattr("backend.agent.httpx.AsyncClient", FakeClient)
+    monkeypatch.setattr("backend.agent_legacy.httpx.AsyncClient", FakeClient)
     async def collect():
         return [event async for event in assistant.ask_stream("What are you studying at BTH?")]
     events = asyncio.run(collect())

@@ -4,7 +4,7 @@ from pathlib import Path
 
 import httpx
 
-from backend.agent import PortfolioAssistant
+from backend.agent_legacy import PortfolioAssistant
 from backend.github_commits import GitHubCommitReader
 from backend.knowledge import KnowledgeStore, _cv_section_documents
 

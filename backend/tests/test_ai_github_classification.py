@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-from backend.agent import PortfolioAssistant
+from backend.agent_legacy import PortfolioAssistant
 from backend.knowledge import KNOWLEDGE_JSON, KnowledgeStore
 from backend.project_catalog import ai_repository_evidence, referenced_repository
 

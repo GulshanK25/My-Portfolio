@@ -1,5 +1,5 @@
 """Regression checks for multi-turn project conversations, without Groq calls."""
-from backend.agent import PortfolioAssistant
+from backend.agent_legacy import PortfolioAssistant
 
 
 ANDROID_HISTORY = [

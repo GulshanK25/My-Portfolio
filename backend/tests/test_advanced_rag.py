@@ -6,7 +6,8 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 
-from backend.agent import PortfolioAssistant
+from backend.agent_legacy import PortfolioAssistant
+from backend.agent_tools import ReadOnlyTools
 from backend.knowledge import KnowledgeStore, build_documents
 from backend.main import app
 
@@ -18,51 +19,60 @@ def ask(question, history=None):
     return response.json()
 
 
+# The historical agent remains available to regression-test existing retrieval.
+# The active v4 /api/chat endpoint deliberately no longer uses its offline
+# document-dumping fallback. These tests exercise source tools directly.
+
 def test_local_search_covers_new_ai_projects(monkeypatch):
-    monkeypatch.delenv('GROQ_API_KEY', raising=False)
-    result = ask('What AI projects has Gulshan built?')
-    assert result['mode'] == 'retrieval_only'
-    assert any(s['id'] == 'project:review' for s in result['sources'])
-    assert any(s['id'] == 'project:rag' for s in result['sources'])
+    monkeypatch.delenv('ENABLE_SEMANTIC', raising=False)
+    store = KnowledgeStore()
+    docs = store.search('AI projects code review website RAG', limit=12)
+    assert any(doc.id == 'project:review' for doc in docs)
+    assert any(doc.id == 'project:rag' for doc in docs)
 
 
 def test_profile_and_cv_are_distinct_sources(monkeypatch):
-    monkeypatch.delenv('GROQ_API_KEY', raising=False)
-    result = ask('Which languages does Gulshan speak?')
-    assert 'English (Professional Proficiency)' in result['answer']
-    assert 'Swedish (Basic Proficiency)' in result['answer']
-    assert any(s['id'] == 'profile:languages' for s in result['sources'])
-    followup = ask('Check in his CV.', [{'role': 'user', 'content': 'Which languages does Gulshan speak?'}])
-    assert followup['sources']
-    assert all(s['id'].startswith('cv:') for s in followup['sources'])
-    assert 'English' in followup['answer']
+    monkeypatch.delenv('ENABLE_SEMANTIC', raising=False)
+    store = KnowledgeStore()
+    result = ReadOnlyTools(store).execute('search_professional_knowledge', {'query':'spoken languages'})
+    assert any(s['id'] == 'profile:languages' for s in result.sources)
+    cv = store.search('spoken languages English Swedish', limit=10, kind='cv')
+    assert cv and all(doc.kind == 'cv' for doc in cv)
 
 
 def test_open_ended_question_covers_multiple_sources(monkeypatch):
-    monkeypatch.delenv('GROQ_API_KEY', raising=False)
-    response = ask('What else do you know about Gulshan?')
-    assert response['sources'][0]['id'] == 'profile'
-    assert any(s['id'].startswith('education:') for s in response['sources'])
-    assert any(s['id'].startswith('experience:') for s in response['sources'])
+    tool = ReadOnlyTools(KnowledgeStore())
+    response = tool.execute('get_professional_overview', {})
+    assert response.sources[0]['id'] == 'profile'
+    assert any(s['id'].startswith('education:') for s in response.sources)
+    assert any(s['id'].startswith('experience:') for s in response.sources)
 
 
-def test_topic_followup_uses_history(monkeypatch):
-    monkeypatch.delenv('GROQ_API_KEY', raising=False)
-    response = ask('What about its technologies?', [{'role': 'user', 'content': 'Tell me about the Website RAG Assistant'}])
-    assert any(s['id'] == 'project:rag' for s in response['sources'])
+def test_followup_can_search_resolved_topic(monkeypatch):
+    monkeypatch.delenv('ENABLE_SEMANTIC', raising=False)
+    tool = ReadOnlyTools(KnowledgeStore())
+    response = tool.execute('search_professional_knowledge',
+                            {'query':'Website RAG Assistant technologies'})
+    assert any(s['id'] == 'project:rag' for s in response.sources)
 
 
-def test_missing_master_thesis_is_not_invented(monkeypatch):
-    monkeypatch.delenv('GROQ_API_KEY', raising=False)
-    response = ask("What is Gulshan's master's thesis title?")
-    assert response['sources'] == []
-    assert response['mode'] == 'no_evidence'
+def test_master_thesis_title_not_automatically_fabricated(monkeypatch):
+    store = KnowledgeStore()
+    store.refresh()
+    assert not any(doc.id.startswith('cv:thesis:') and
+                   'master' in doc.title.lower() for doc in store.documents)
+    # The model must inspect evidence rather than use a prefilled answer.
+    assert any('Only professional-source tool outputs' in msg['content']
+               for msg in __import__('backend.agent', fromlist=['PortfolioAssistant'])
+               .PortfolioAssistant._messages('What is his master thesis title?', []))
 
 
-def test_unspecified_cv_followup_needs_clarification(monkeypatch):
+def test_no_key_offline_failure_is_truthful(monkeypatch):
     monkeypatch.delenv('GROQ_API_KEY', raising=False)
     response = ask('check in his CV')
-    assert response['mode'] == 'clarification'
+    assert response['mode'] == 'unavailable'
+    assert response['sources'] == []
+    assert 'The AI service' in response['answer']
 
 
 def test_groq_uses_only_server_side_environment_and_verified_sources(monkeypatch):
@@ -84,7 +94,7 @@ def test_groq_uses_only_server_side_environment_and_verified_sources(monkeypatch
             calls.append((url, kwargs))
             return MockResponse()
 
-    monkeypatch.setattr('backend.agent.httpx.Client', FakeHTTP)
+    monkeypatch.setattr('backend.agent_legacy.httpx.Client', FakeHTTP)
     response = PortfolioAssistant().ask('Explain Gulshan’s RAG assistant')
     assert response['mode'] == 'groq'
     assert 'LangGraph' in response['answer']
@@ -148,7 +158,7 @@ def test_groq_http_error_logs_status_and_redacts_api_key(monkeypatch, caplog):
                 request=httpx.Request('POST', url),
             )
 
-    monkeypatch.setattr('backend.agent.httpx.Client', FakeHTTP)
+    monkeypatch.setattr('backend.agent_legacy.httpx.Client', FakeHTTP)
     with caplog.at_level('WARNING'):
         result = PortfolioAssistant().ask('Explain the architecture of his RAG assistant')
     assert result['mode'] == 'retrieval_only'
@@ -174,7 +184,7 @@ def test_groq_retries_400_with_minimal_single_user_message(monkeypatch, caplog):
                                       request=httpx.Request('POST', url))
             return httpx.Response(200, json={'choices':[{'message':{'content':'Gulshan is studying Software Engineering at BTH.'}}]},
                                   request=httpx.Request('POST',url))
-    monkeypatch.setattr('backend.agent.httpx.Client', FakeHTTP)
+    monkeypatch.setattr('backend.agent_legacy.httpx.Client', FakeHTTP)
     with caplog.at_level('WARNING'):
         result=PortfolioAssistant().ask('What is Gulshan studying at BTH?')
     assert result['mode'] == 'groq'
@@ -199,7 +209,7 @@ def test_groq_nonstandard_errors_are_logged_and_secrets_redacted(monkeypatch, ca
             return httpx.Response(400, json={'detail':'Body rejected gsk_SUPERSECRET123456789'},
                                   headers={'x-request-id': 'req-abc-123'},
                                   request=httpx.Request('POST',url))
-    monkeypatch.setattr('backend.agent.httpx.Client', FakeHTTP)
+    monkeypatch.setattr('backend.agent_legacy.httpx.Client', FakeHTTP)
     with caplog.at_level('WARNING'):
         result=PortfolioAssistant().ask('What is he studying at BTH?')
     assert result['mode'] == 'retrieval_only'

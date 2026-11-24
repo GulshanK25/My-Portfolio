@@ -1,5 +1,5 @@
 """Multi-turn context and source-scoped follow-ups."""
-from backend.agent import PortfolioAssistant
+from backend.agent_legacy import PortfolioAssistant
 
 
 def test_open_question_includes_current_profile(monkeypatch):

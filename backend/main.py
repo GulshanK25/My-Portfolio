@@ -1,4 +1,4 @@
-"""FastAPI entry point for Gulshan AI v2."""
+"""FastAPI entry point for Gulshan AI v4."""
 from __future__ import annotations
 
 import json
@@ -61,7 +61,7 @@ async def lifespan(_: FastAPI):
         _stop_sync()
 
 
-app = FastAPI(title="Gulshan AI API", version="2.0.0", lifespan=lifespan)
+app = FastAPI(title="Gulshan AI API", version="4.0.0", lifespan=lifespan)
 allowed_origins = [x.strip() for x in os.getenv(
     "ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000"
 ).split(",") if x.strip()]
@@ -100,7 +100,7 @@ def health():
             "groq_configured": bool(os.getenv("GROQ_API_KEY", "").strip()),
             "groq_model": os.getenv("GROQ_MODEL", "openai/gpt-oss-20b"),
             "streaming": True,
-            "version": "2.1.0",
+            "version": "4.0.0",
             "github_sync": {
                 "enabled": os.getenv('GITHUB_AUTO_SYNC', '0') == '1',
                 "synced_at": github_cache.get('synced_at'),

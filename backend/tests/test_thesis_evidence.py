@@ -1,7 +1,7 @@
 """Academic CV sections must remain complete and outrank unrelated matches."""
 from __future__ import annotations
 
-from backend.agent import PortfolioAssistant
+from backend.agent_legacy import PortfolioAssistant
 from backend.knowledge import KnowledgeStore, _thesis_section_in_cv
 from backend.semantic import SemanticMatch
 

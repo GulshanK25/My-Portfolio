@@ -7,7 +7,7 @@ from pathlib import Path
 
 import httpx
 
-from backend.agent import PortfolioAssistant
+from backend.agent_legacy import PortfolioAssistant
 from backend.knowledge import KNOWLEDGE_JSON, KnowledgeStore
 from backend.source_sync import GitHubKnowledgeSync, load_json
 

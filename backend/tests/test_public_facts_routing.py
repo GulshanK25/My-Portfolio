@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-from backend.agent import PortfolioAssistant
+from backend.agent_legacy import PortfolioAssistant
 from backend.knowledge import KnowledgeStore
 
 
@@ -79,7 +79,7 @@ def test_groq_receives_verified_language_and_current_status_sources(monkeypatch)
             submitted.append(kwargs["json"])
             return FakeResponse()
 
-    monkeypatch.setattr("backend.agent.httpx.Client", FakeClient)
+    monkeypatch.setattr("backend.agent_legacy.httpx.Client", FakeClient)
     answer = PortfolioAssistant().ask("What programming languages does Gulshan know?")
     assert answer["mode"] == "groq"
     assert answer["sources"][0]["id"] == "profile:programming_languages"
